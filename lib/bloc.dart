@@ -17,11 +17,9 @@ class BlocLogin extends ValidaLogin {
   Function(String) get keypresUsuario => _usuario.sink.add;
   Function(String) get keypresSenha => _senha.sink.add;
 
-  submit() {
-    print('your email is :' + _usuario.value);
-    print('your password is :' + _senha.value);
-    // result = http request
-    // show the error to the user if there are
+  enviaDados() {
+    print('Usuario :' + _usuario.value);
+    print('Senha :' + _senha.value);
   }
 
   //destruindo os stream, equivalente ao onDestroi do android

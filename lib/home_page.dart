@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
           return Column(
             children: <Widget>[
               RaisedButton(
-                onPressed: (!snap.hasData) ? null : controller.submit,
+                onPressed: (!snap.hasData) ? null : controller.enviaDados(),
                 child: Text(
                   'Login Page',
                   style: TextStyle(color: Colors.white),
