@@ -61,6 +61,7 @@ class _HomePageState extends State<HomePage> {
                             labelText: 'Senha',
                             errorText: snapshot.error,
                           ),
+                          obscureText: true,
                           onChanged: controller.keypresSenha,
                         ),
                       );
@@ -83,16 +84,26 @@ class _HomePageState extends State<HomePage> {
           return Column(
             children: <Widget>[
               RaisedButton(
-                onPressed: (!snap.hasData) ? null : controller.enviaDados(),
+                onPressed: (snap.hasData)
+                    ? () {
+                        bloc.enviaDados();
+                      }
+                    : null,
                 child: Text(
-                  'Login Page',
-                  style: TextStyle(color: Colors.white),
+                  (snap.hasData)
+                      ? "OK! Pode fazer o login agora"
+                      : "Ainda não validou seus dados!",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
                 color: Colors.blue,
               ),
               Text((!snap.hasError)
                   ? "Validação efetuada com sucesso!"
-                  : "A validação não foi bem sucedida!    az")
+                  : "A validação não foi bem sucedida!")
             ],
           );
         },
@@ -100,6 +111,5 @@ class _HomePageState extends State<HomePage> {
   @override
   void dispose() {
     super.dispose();
-    controller.dispose();
   }
 }
